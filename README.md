@@ -5,11 +5,11 @@
 </div>
 
 ### Use by your own
-1. Navigate into the project `cd DMG`
+1. Navigate into the project directory
 2. Run the following command in your terminal:
 ```bash
 go run main.go
 ```
 
 > [!IMPORTANT]
-> Project requires `C Compiler` & `[GoLang Compiler](https://go.dev/dl/)` to start
+> Project requires `C Compiler` & [GoLang Compiler](https://go.dev/dl/) to start
