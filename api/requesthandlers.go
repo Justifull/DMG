@@ -29,7 +29,7 @@ func getClient(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var client structs.Client
 	if err := database.DB.Preload("Rides.Waypoints").First(&client, params["id"]).Error; err != nil {
-		http.Error(w, "Client not found", http.StatusNotFound)
+		http.Error(w, "Error 404: Client not found", http.StatusNotFound)
 		return
 	}
 	if err := json.NewEncoder(w).Encode(client); err != nil {
@@ -58,7 +58,7 @@ func updateClient(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var client structs.Client
 	if err := database.DB.First(&client, params["id"]).Error; err != nil {
-		http.Error(w, "Client not found", http.StatusNotFound)
+		http.Error(w, "Error 404: Client not found", http.StatusNotFound)
 		return
 	}
 	if err := json.NewDecoder(r.Body).Decode(&client); err != nil {
@@ -79,7 +79,7 @@ func patchClient(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var client structs.Client
 	if err := database.DB.First(&client, params["id"]).Error; err != nil {
-		http.Error(w, "Client not found", http.StatusNotFound)
+		http.Error(w, "Error 404: Client not found", http.StatusNotFound)
 		return
 	}
 	if err := json.NewDecoder(r.Body).Decode(&client); err != nil {
@@ -100,7 +100,7 @@ func deleteClient(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var client structs.Client
 	if err := database.DB.First(&client, params["id"]).Error; err != nil {
-		http.Error(w, "Client not found", http.StatusNotFound)
+		http.Error(w, "Error 404: Client not found", http.StatusNotFound)
 		return
 	}
 	if err := database.DB.Delete(&client).Error; err != nil {
@@ -127,7 +127,7 @@ func getRide(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var ride structs.Ride
 	if err := database.DB.Preload("Waypoints").First(&ride, params["id"]).Error; err != nil {
-		http.Error(w, "Ride not found", http.StatusNotFound)
+		http.Error(w, "Error 404: Ride not found", http.StatusNotFound)
 		return
 	}
 	if err := json.NewEncoder(w).Encode(ride); err != nil {
@@ -156,7 +156,7 @@ func updateRide(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var ride structs.Ride
 	if err := database.DB.First(&ride, params["id"]).Error; err != nil {
-		http.Error(w, "Ride not found", http.StatusNotFound)
+		http.Error(w, "Error 404: Ride not found", http.StatusNotFound)
 		return
 	}
 	if err := json.NewDecoder(r.Body).Decode(&ride); err != nil {
@@ -177,7 +177,7 @@ func patchRide(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var ride structs.Ride
 	if err := database.DB.First(&ride, params["id"]).Error; err != nil {
-		http.Error(w, "Ride not found", http.StatusNotFound)
+		http.Error(w, "Error 404: Ride not found", http.StatusNotFound)
 		return
 	}
 	if err := json.NewDecoder(r.Body).Decode(&ride); err != nil {
@@ -198,7 +198,7 @@ func deleteRide(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var ride structs.Ride
 	if err := database.DB.First(&ride, params["id"]).Error; err != nil {
-		http.Error(w, "Ride not found", http.StatusNotFound)
+		http.Error(w, "Error 404: Ride not found", http.StatusNotFound)
 		return
 	}
 	if err := database.DB.Delete(&ride).Error; err != nil {
@@ -225,7 +225,7 @@ func getDriver(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var driver structs.Driver
 	if err := database.DB.First(&driver, params["id"]).Error; err != nil {
-		http.Error(w, "Driver not found", http.StatusNotFound)
+		http.Error(w, "Error 404: Driver not found", http.StatusNotFound)
 		return
 	}
 	if err := json.NewEncoder(w).Encode(driver); err != nil {
@@ -254,7 +254,7 @@ func updateDriver(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var driver structs.Driver
 	if err := database.DB.First(&driver, params["id"]).Error; err != nil {
-		http.Error(w, "Driver not found", http.StatusNotFound)
+		http.Error(w, "Error 404: Driver not found", http.StatusNotFound)
 		return
 	}
 	if err := json.NewDecoder(r.Body).Decode(&driver); err != nil {
@@ -275,7 +275,7 @@ func patchDriver(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var driver structs.Driver
 	if err := database.DB.First(&driver, params["id"]).Error; err != nil {
-		http.Error(w, "Driver not found", http.StatusNotFound)
+		http.Error(w, "Error 404: Driver not found", http.StatusNotFound)
 		return
 	}
 	if err := json.NewDecoder(r.Body).Decode(&driver); err != nil {
@@ -296,7 +296,7 @@ func deleteDriver(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var driver structs.Driver
 	if err := database.DB.First(&driver, params["id"]).Error; err != nil {
-		http.Error(w, "Driver not found", http.StatusNotFound)
+		http.Error(w, "Error 404: Driver not found", http.StatusNotFound)
 		return
 	}
 	if err := database.DB.Delete(&driver).Error; err != nil {
@@ -323,7 +323,7 @@ func getWaypoint(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var waypoint structs.Waypoint
 	if err := database.DB.First(&waypoint, params["id"]).Error; err != nil {
-		http.Error(w, "Waypoint not found", http.StatusNotFound)
+		http.Error(w, "Error 404: Waypoint not found", http.StatusNotFound)
 		return
 	}
 	if err := json.NewEncoder(w).Encode(waypoint); err != nil {
@@ -352,7 +352,7 @@ func updateWaypoint(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var waypoint structs.Waypoint
 	if err := database.DB.First(&waypoint, params["id"]).Error; err != nil {
-		http.Error(w, "Waypoint not found", http.StatusNotFound)
+		http.Error(w, "Error 404: Waypoint not found", http.StatusNotFound)
 		return
 	}
 	if err := json.NewDecoder(r.Body).Decode(&waypoint); err != nil {
@@ -373,7 +373,7 @@ func patchWaypoint(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var waypoint structs.Waypoint
 	if err := database.DB.First(&waypoint, params["id"]).Error; err != nil {
-		http.Error(w, "Waypoint not found", http.StatusNotFound)
+		http.Error(w, "Error 404: Waypoint not found", http.StatusNotFound)
 		return
 	}
 	if err := json.NewDecoder(r.Body).Decode(&waypoint); err != nil {
@@ -394,7 +394,7 @@ func deleteWaypoint(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var waypoint structs.Waypoint
 	if err := database.DB.First(&waypoint, params["id"]).Error; err != nil {
-		http.Error(w, "Waypoint not found", http.StatusNotFound)
+		http.Error(w, "Error 404: Waypoint not found", http.StatusNotFound)
 		return
 	}
 	if err := database.DB.Delete(&waypoint).Error; err != nil {
