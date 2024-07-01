@@ -5,6 +5,7 @@ import (
 	"DMG/structs"
 	"encoding/json"
 	"github.com/gorilla/mux"
+	"log"
 	"net/http"
 )
 
@@ -12,7 +13,10 @@ import (
 func getClients(w http.ResponseWriter, r *http.Request) {
 	var clients []structs.Client
 	database.DB.Preload("Rides.Waypoints").Find(&clients)
-	json.NewEncoder(w).Encode(clients)
+	err := json.NewEncoder(w).Encode(clients)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func getClient(w http.ResponseWriter, r *http.Request) {
@@ -23,14 +27,20 @@ func getClient(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Client not found", http.StatusNotFound)
 		return
 	}
-	json.NewEncoder(w).Encode(client)
+	err := json.NewEncoder(w).Encode(client)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func createClient(w http.ResponseWriter, r *http.Request) {
 	var client structs.Client
 	_ = json.NewDecoder(r.Body).Decode(&client)
 	database.DB.Create(&client)
-	json.NewEncoder(w).Encode(client)
+	err := json.NewEncoder(w).Encode(client)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func updateClient(w http.ResponseWriter, r *http.Request) {
@@ -43,7 +53,10 @@ func updateClient(w http.ResponseWriter, r *http.Request) {
 	}
 	_ = json.NewDecoder(r.Body).Decode(&client)
 	database.DB.Save(&client)
-	json.NewEncoder(w).Encode(client)
+	err := json.NewEncoder(w).Encode(client)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func deleteClient(w http.ResponseWriter, r *http.Request) {
@@ -63,7 +76,10 @@ func deleteClient(w http.ResponseWriter, r *http.Request) {
 func getRides(w http.ResponseWriter, r *http.Request) {
 	var rides []structs.Ride
 	database.DB.Preload("Waypoints").Find(&rides)
-	json.NewEncoder(w).Encode(rides)
+	err := json.NewEncoder(w).Encode(rides)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func getRide(w http.ResponseWriter, r *http.Request) {
@@ -74,14 +90,20 @@ func getRide(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Ride not found", http.StatusNotFound)
 		return
 	}
-	json.NewEncoder(w).Encode(ride)
+	err := json.NewEncoder(w).Encode(ride)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func createRide(w http.ResponseWriter, r *http.Request) {
 	var ride structs.Ride
 	_ = json.NewDecoder(r.Body).Decode(&ride)
 	database.DB.Create(&ride)
-	json.NewEncoder(w).Encode(ride)
+	err := json.NewEncoder(w).Encode(ride)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func updateRide(w http.ResponseWriter, r *http.Request) {
@@ -94,7 +116,10 @@ func updateRide(w http.ResponseWriter, r *http.Request) {
 	}
 	_ = json.NewDecoder(r.Body).Decode(&ride)
 	database.DB.Save(&ride)
-	json.NewEncoder(w).Encode(ride)
+	err := json.NewEncoder(w).Encode(ride)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func deleteRide(w http.ResponseWriter, r *http.Request) {
@@ -113,7 +138,10 @@ func deleteRide(w http.ResponseWriter, r *http.Request) {
 func getDrivers(w http.ResponseWriter, r *http.Request) {
 	var drivers []structs.Driver
 	database.DB.Find(&drivers)
-	json.NewEncoder(w).Encode(drivers)
+	err := json.NewEncoder(w).Encode(drivers)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func getDriver(w http.ResponseWriter, r *http.Request) {
@@ -124,14 +152,20 @@ func getDriver(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Driver not found", http.StatusNotFound)
 		return
 	}
-	json.NewEncoder(w).Encode(driver)
+	err := json.NewEncoder(w).Encode(driver)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func createDriver(w http.ResponseWriter, r *http.Request) {
 	var driver structs.Driver
 	_ = json.NewDecoder(r.Body).Decode(&driver)
 	database.DB.Create(&driver)
-	json.NewEncoder(w).Encode(driver)
+	err := json.NewEncoder(w).Encode(driver)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func updateDriver(w http.ResponseWriter, r *http.Request) {
@@ -144,7 +178,10 @@ func updateDriver(w http.ResponseWriter, r *http.Request) {
 	}
 	_ = json.NewDecoder(r.Body).Decode(&driver)
 	database.DB.Save(&driver)
-	json.NewEncoder(w).Encode(driver)
+	err := json.NewEncoder(w).Encode(driver)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func deleteDriver(w http.ResponseWriter, r *http.Request) {
@@ -163,7 +200,10 @@ func deleteDriver(w http.ResponseWriter, r *http.Request) {
 func getWaypoints(w http.ResponseWriter, r *http.Request) {
 	var waypoints []structs.Waypoint
 	database.DB.Find(&waypoints)
-	json.NewEncoder(w).Encode(waypoints)
+	err := json.NewEncoder(w).Encode(waypoints)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func getWaypoint(w http.ResponseWriter, r *http.Request) {
@@ -174,14 +214,20 @@ func getWaypoint(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Waypoint not found", http.StatusNotFound)
 		return
 	}
-	json.NewEncoder(w).Encode(waypoint)
+	err := json.NewEncoder(w).Encode(waypoint)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func createWaypoint(w http.ResponseWriter, r *http.Request) {
 	var waypoint structs.Waypoint
 	_ = json.NewDecoder(r.Body).Decode(&waypoint)
 	database.DB.Create(&waypoint)
-	json.NewEncoder(w).Encode(waypoint)
+	err := json.NewEncoder(w).Encode(waypoint)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func updateWaypoint(w http.ResponseWriter, r *http.Request) {
@@ -194,7 +240,10 @@ func updateWaypoint(w http.ResponseWriter, r *http.Request) {
 	}
 	_ = json.NewDecoder(r.Body).Decode(&waypoint)
 	database.DB.Save(&waypoint)
-	json.NewEncoder(w).Encode(waypoint)
+	err := json.NewEncoder(w).Encode(waypoint)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 func deleteWaypoint(w http.ResponseWriter, r *http.Request) {
