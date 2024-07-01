@@ -2,14 +2,14 @@ package structs
 
 import "time"
 
-// Client represents a client with a name
+// Client struct
 type Client struct {
 	ID    uint   `gorm:"primaryKey"`
 	Name  string `json:"name"`
 	Rides []Ride `gorm:"foreignKey:ClientID;constraint:OnDelete:CASCADE;"`
 }
 
-// Ride represents a ride with a date, distance, price, and associated waypoints
+// Ride struct
 type Ride struct {
 	ID        uint       `gorm:"primaryKey"`
 	RideDate  time.Time  `json:"rideDate"`
@@ -22,7 +22,7 @@ type Ride struct {
 	Driver    Driver
 }
 
-// Driver represents a driver with a name and license plate
+// Driver struct
 type Driver struct {
 	ID           uint   `gorm:"primaryKey"`
 	Name         string `json:"name"`
@@ -30,7 +30,7 @@ type Driver struct {
 	Rides        []Ride `gorm:"foreignKey:DriverID;constraint:OnDelete:CASCADE;"`
 }
 
-// Waypoint represents a waypoint with a number, latitude, and longitude
+// Waypoint struct
 type Waypoint struct {
 	ID        uint    `gorm:"primaryKey"`
 	Number    int     `json:"number"`
