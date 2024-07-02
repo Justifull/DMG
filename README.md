@@ -12,4 +12,4 @@ go run main.go
 ```
 
 > [!IMPORTANT]
-> Project requires `C Compiler` & [GoLang Compiler](https://go.dev/dl/) to start
+> Project requires `C Compiler` & [GoLang Compiler](https://go.dev/dl/) to start on Windows (Apple without complains)
