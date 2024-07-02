@@ -15,7 +15,7 @@ import (
 // Clients get-request handler
 func getClients(w http.ResponseWriter, r *http.Request) {
 	var clients []structs.Client
-	if err := database.DB.Preload("Rides.Waypoints").Find(&clients).Error; err != nil {
+	if err := database.DB.Find(&clients).Error; err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
@@ -224,7 +224,7 @@ func getDrivers(w http.ResponseWriter, r *http.Request) {
 func getDriver(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var driver structs.Driver
-	if err := database.DB.First(&driver, params["id"]).Error; err != nil {
+	if err := database.DB.Preload("Rides.Waypoints").First(&driver, params["id"]).Error; err != nil {
 		http.Error(w, "Driver not found", http.StatusNotFound)
 		return
 	}
