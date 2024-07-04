@@ -11,7 +11,7 @@
 go run main.go
 ```
 
-> [!TIPP]
+> [!TIP]
 > Run Project in [GoLand by JetBrains](https://www.jetbrains.com/de-de/go/) on MacOS or Linux to prevent problems
 
 > [!IMPORTANT]
