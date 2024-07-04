@@ -11,5 +11,8 @@
 go run main.go
 ```
 
+> [!TIPP]
+> Run Project in [GoLand by JetBrains](https://www.jetbrains.com/de-de/go/) on MacOS or Linux to prevent problems
+
 > [!IMPORTANT]
-> Project requires `C Compiler` & [GoLang Compiler](https://go.dev/dl/) to start on Windows (Apple without complains)
+> Project requires `C Compiler` & [GoLang Compiler](https://go.dev/dl/) to start on Windows
