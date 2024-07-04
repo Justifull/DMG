@@ -18,8 +18,6 @@ type Ride struct {
 	ClientID  uint       `json:"clientId"`
 	DriverID  uint       `json:"driverId"`
 	Waypoints []Waypoint `gorm:"foreignKey:RideID;constraint:OnDelete:CASCADE;"`
-	Client    Client
-	Driver    Driver
 }
 
 // Driver struct
@@ -36,6 +34,5 @@ type Waypoint struct {
 	Number    int     `json:"number"`
 	Latitude  float64 `json:"latitude"`
 	Longitude float64 `json:"longitude"`
-	RideID    uint    `gorm:"index"`
-	Ride      Ride    `gorm:"constraint:OnDelete:CASCADE;"`
+	RideID    uint    `gorm:"constraint:OnDelete:CASCADE;"`
 }
